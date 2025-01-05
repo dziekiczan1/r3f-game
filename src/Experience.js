@@ -1,14 +1,16 @@
-import Lights from './Lights.jsx';
+import Lights from './Lights.js';
 import {Level} from "./Level.js";
 import {Physics} from "@react-three/rapier";
 import Player from "./Player.js";
+import useGame from "./stores/useGame.js";
 
 export default function Experience() {
+    const blocksCount = useGame((state) => state.blocksCount);
     return (
         <>
             <Physics debug={false}>
                 <Lights/>
-                <Level/>
+                <Level count={blocksCount}/>
                 <Player/>
             </Physics>
         </>
